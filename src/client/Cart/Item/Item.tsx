@@ -52,8 +52,8 @@ const Item = ({ item, handleAddToCart }) => {
 
   return (
     <>
-    <Wrapper onClick={ () => setOpen(true)}>
-    <img src={item.image} alt={item.title} />
+    <Wrapper  >
+    <img src={item.image} alt={item.title} onClick={ () => setOpen(true)}/>
     <div>
       <h3>{item.title}</h3>
       <h3>${item.price}</h3>
@@ -62,7 +62,7 @@ const Item = ({ item, handleAddToCart }) => {
       onClick={() => handleAddToCart(item)}
       data-cy={`add-to-cart-${item.id}`}>Add to cart</Button>
       </Wrapper>
-          <Dialog
+    <Dialog
         open={open}
         onClose={() => setOpen(false)}
         aria-labelledby="confirm-dialog"
