@@ -48,15 +48,21 @@ import React, { useState } from 'react'
 const Item = ({ item, handleAddToCart }) => {
 
   const [open, setOpen] = useState(false)
+  console.log('open:', open)
 
   return (
+    <>
     <Wrapper onClick={ () => setOpen(true)}>
     <img src={item.image} alt={item.title} />
     <div>
       <h3>{item.title}</h3>
       <h3>${item.price}</h3>
     </div>
-    <Dialog
+    <Button
+      onClick={() => handleAddToCart(item)}
+      data-cy={`add-to-cart-${item.id}`}>Add to cart</Button>
+      </Wrapper>
+          <Dialog
         open={open}
         onClose={() => setOpen(false)}
         aria-labelledby="confirm-dialog"
@@ -66,17 +72,14 @@ const Item = ({ item, handleAddToCart }) => {
         <DialogActions>
           <Button
             variant="contained"
-            onClick={() => console.log("Close")}
+            onClick={() => setOpen(false)}
             color="secondary"
           >
             Close
           </Button>
         </DialogActions>
       </Dialog>
-    <Button
-      onClick={() => handleAddToCart(item)}
-      data-cy={`add-to-cart-${item.id}`}>Add to cart</Button>
-  </Wrapper>
+    </>
   )
 }
 
