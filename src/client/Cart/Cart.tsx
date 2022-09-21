@@ -1,6 +1,7 @@
 import CartItem from './CartItem/CartItem';
 import { Wrapper } from './Cart.styles';
 import { CartItemType } from '../App';
+import { Button } from '@material-ui/core';
 
 type Props = {
   cartItems: CartItemType[];
@@ -25,6 +26,7 @@ const Cart: React.FC<Props> = ({ cartItems, addToCart, removeFromCart }) => {
         />
       ))}
       <h2>Total: ${calculateTotal(cartItems).toFixed(2)}</h2>
+      <Button variant="contained">Purchase</Button>
     </Wrapper>
   );
 };
