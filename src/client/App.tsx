@@ -96,7 +96,7 @@ const App = () => {
             justify="space-between"
             alignItems="center"
           >
-            <StyledButton onClick={() => setPurchasesOpen(true)}>
+            <StyledButton onClick={() => setPurchasesOpen(true)} data-cy='purchases-list-btn'>
               <RestoreIcon />
               <Typography variant="subtitle2">
                 Recent Purchases
@@ -107,7 +107,7 @@ const App = () => {
               Welcome to Patient Zero's Cheeseria
             </HeaderTypography>
 
-            <StyledButton onClick={() => setCartOpen(true)}>
+            <StyledButton onClick={() => setCartOpen(true)} data-cy='cart-list-btn'>
               <Badge
                 badgeContent={getTotalItems(cartItems)}
                 color='error'
@@ -134,7 +134,14 @@ const App = () => {
 
       <Drawer anchor='left' open={purchasesOpen} onClose={() => setPurchasesOpen(false)}>
         <h3>Purchases</h3>
-
+        <Grid direction="column" container>
+          {purchasesData !== null || undefined ? purchasesData?.map(item => (
+            <Grid>
+              <h4>{item.title}</h4>
+              <p>${ item.price }</p>
+            </Grid>
+          )) : "No Purchases available"}
+        </Grid>
       </Drawer>
       <Grid container spacing={3}>
         {cheeseData?.map(item => (
