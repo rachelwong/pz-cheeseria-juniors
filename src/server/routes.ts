@@ -1,6 +1,6 @@
 import * as express from 'express';
 const cheeses = require('./data/cheeses.json');
-const dummyPurchase = require('./data/dummyPurhcase.json');
+const dummyPurchase = require('./data/dummyPurchase.json');
 
 const router = express.Router();
 

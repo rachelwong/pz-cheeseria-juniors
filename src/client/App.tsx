@@ -12,6 +12,7 @@ import Badge from '@material-ui/core/Badge';
 // Styles
 import { Wrapper, StyledButton, StyledAppBar, HeaderTypography } from './App.styles';
 import { AppBar, Toolbar, Typography } from '@material-ui/core';
+
 // Types
 export type CartItemType = {
   id: number;
@@ -23,18 +24,30 @@ export type CartItemType = {
   amount: number;
 };
 
+export type PurchaseType = {
+  id: number;
+  category: string;
+  description: string;
+  image: string;
+  price: number;
+  title: string;
+  amount: number;
+};
+
+const getPurchases = async (): Promise<PurchaseType[]> =>
+  await (await fetch(`/api/purchase`)).json();
 
 const getCheeses = async (): Promise<CartItemType[]> =>
   await (await fetch(`api/cheeses`)).json();
 
 const App = () => {
   const [cartOpen, setCartOpen] = useState(false);
+  const [purchasesOpen, setPurchasesOpen] = useState(false);
   const [cartItems, setCartItems] = useState([] as CartItemType[]);
-  const { data, isLoading, error } = useQuery<CartItemType[]>(
-    'cheeses',
-    getCheeses
-  );
-  console.log(data);
+
+  const { data:cheeseData, isLoading:cheeseLoading, error:cheeseError } = useQuery('cheeses', getCheeses);
+  const { data:purchasesData, error: purchasesError, isLoading: purchasesLoading } = useQuery('purchases', getPurchases);
+  console.log('purchasesData:', purchasesData)
 
   const getTotalItems = (items: CartItemType[]) =>
     items.reduce((ack: number, item) => ack + item.amount, 0);
@@ -69,8 +82,8 @@ const App = () => {
     );
   };
 
-  if (isLoading) return <LinearProgress />;
-  if (error) return <div>Something went wrong ...</div>;
+  if (cheeseLoading) return <LinearProgress />;
+  if (cheeseError) return <div>Something went wrong ...</div>;
 
   return (
 
@@ -83,7 +96,7 @@ const App = () => {
             justify="space-between"
             alignItems="center"
           >
-            <StyledButton>
+            <StyledButton onClick={() => setPurchasesOpen(true)}>
               <RestoreIcon />
               <Typography variant="subtitle2">
                 Recent Purchases
@@ -119,8 +132,12 @@ const App = () => {
         />
       </Drawer>
 
+      <Drawer anchor='left' open={purchasesOpen} onClose={() => setPurchasesOpen(false)}>
+        <h3>Purchases</h3>
+
+      </Drawer>
       <Grid container spacing={3}>
-        {data?.map(item => (
+        {cheeseData?.map(item => (
           <Grid item key={item.id} xs={12} sm={4}>
             <Item item={item} handleAddToCart={handleAddToCart} />
           </Grid>
