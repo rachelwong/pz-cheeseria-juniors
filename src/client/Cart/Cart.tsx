@@ -37,7 +37,7 @@ const Cart: React.FC<Props> = ({ cartItems, addToCart, removeFromCart }) => {
         />
       ))}
       <h2>Total: ${calculateTotal(cartItems).toFixed(2)}</h2>
-      <Button variant="contained" onClick={ handlePurchases}>Purchase</Button>
+      <Button variant="contained" onClick={ handlePurchases} data-cy='purchase-btn'>Purchase</Button>
     </Wrapper>
   );
 };

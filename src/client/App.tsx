@@ -134,7 +134,7 @@ const App = () => {
 
       <Drawer anchor='left' open={purchasesOpen} onClose={() => setPurchasesOpen(false)}>
         <h3>Purchases</h3>
-        <Grid direction="column" container>
+        <Grid direction="column" container data-cy='purchase-list'>
           {purchasesData !== null || undefined ? purchasesData?.map(item => (
             <Grid>
               <h4>{item.title}</h4>
