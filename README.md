@@ -12,7 +12,7 @@
 
 3. Show all recently purchased items when clicking on the "Recent Purchases" button on the top left of the page. You may choose to display those items in a Drawer, a Dialog or any other control you see fit. Note that the recent purchased items **must** be retrieved from the server.
 
-> Same as above in point 2, I'm not able to configure the server backend as I really did not understand the workings of the backend. Instead I injected dummy data into the /api/purchase endpoint (GET route).
+> Same as above in point 2, I'm not able to configure the server backend as I really did not understand the workings of the backend. I tried retrieving data from textfile and reconvert it into an array. Instead I injected dummy data into the /api/purchase endpoint (GET route).
 
 4. Add a UI automation test that performs the Purchase action you implemented as part of Feature #2. For this test case you will add two separate items to the cart and click on the **Purchase** button you have added as part of Feature #2.
 For this exercise we will be using the Cypress.io tool-set. You will find code to get you started in the 'e2e' folder.

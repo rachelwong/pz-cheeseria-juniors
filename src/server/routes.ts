@@ -15,6 +15,14 @@ router.get('/api/cheeses', (req, res, next) => {
 router.get('/api/purchase', (req, res, next) => {
     res.json(dummyPurchase);
     // res.json(req.body)
+
+    // attempt to read from file
+    // try {
+    //     var data = fs.readFileSync('/data/array.txt', 'utf8');
+    //     res.json(data.toString());
+    // } catch(e) {
+    //     console.log('Error:', e.stack);
+    // }
 });
 
 // to send all purchased items to server
