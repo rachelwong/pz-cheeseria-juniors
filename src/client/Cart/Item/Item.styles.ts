@@ -27,3 +27,16 @@ export const Wrapper = styled.div`
     height: 100%;
   }
 `;
+
+export const DialogImage = styled.div`
+  display:block;
+  max-width: 50%;
+  width: 100%;
+
+  img {
+    object-fit: cover;
+    display:block;
+    width: 100%;
+    height: 100%;
+  }
+`

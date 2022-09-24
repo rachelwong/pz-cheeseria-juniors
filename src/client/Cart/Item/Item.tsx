@@ -2,7 +2,7 @@ import Button from '@material-ui/core/Button';
 // Types
 import { CartItemType } from '../../App';
 // Styles
-import { Wrapper } from './Item.styles';
+import { Wrapper, DialogImage } from './Item.styles';
 import {DialogTitle, Dialog, DialogContent, DialogActions } from '@material-ui/core';
 import { useState } from 'react'
 
@@ -31,8 +31,14 @@ const Item: React.FC<Props> = ({ item, handleAddToCart }) => {
          onClose={() => setOpen(false)}
          aria-labelledby="confirm-dialog"
        >
-         <DialogTitle id="confirm-dialog">{item.title}</DialogTitle>
-         <DialogContent>{item.description}</DialogContent>
+        <DialogTitle id="confirm-dialog">{item.title} at <span>${item.price}</span></DialogTitle>
+        <DialogContent>
+          <DialogImage>
+            <img src={item.image} alt={ item.title } />
+          </DialogImage>
+          <h5>Category: {item.category}</h5>
+          <p>{item.description}</p>
+        </DialogContent>
          <DialogActions>
            <Button
              variant="contained"
