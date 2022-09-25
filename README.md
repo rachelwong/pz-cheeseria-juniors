@@ -4,9 +4,9 @@
 
 1. When clicking on a Cheese card, open a [Dialog](https://material-ui.com/components/dialogs/#dialog) that contains all the details of the card, including the item's **description**.
 
-> This is completed. There is room for the dialog box to be extracted a separate component in itself but majority of the time was spent researching how to connect to the backend and send data back. I opted to make the card image only to be the trigger for the dialog because making the whole card won't be possible without interfering with the add to cart button click event.
+> This is completed. There is room for the dialog box to be extracted a separate component in itself but majority of the time was spent researching how to connect to the backend and send data back. I opted to make only the card image to be the trigger for the dialog because making the whole card as a link won't be possible without interfering with the "Add to cart" button click event.
 
-2. Add a **Purchase** button to the Cart (In the sliding view that opens when you click the 'Cart' button). Clicking on the **Purchase** button will send all items in the cart to the server (backend) and store them for later use (You are not required to use a Database in this exercise, but you may do so if you wish).
+1. Add a **Purchase** button to the Cart (In the sliding view that opens when you click the 'Cart' button). Clicking on the **Purchase** button will send all items in the cart to the server (backend) and store them for later use (You are not required to use a Database in this exercise, but you may do so if you wish).
 
 > I researched and attempted various methods including commiting the changes to a text file as a JSON.stringif-ied array, localstorage but to no avail.
 

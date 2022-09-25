@@ -37,6 +37,8 @@ const Item: React.FC<Props> = ({ item, handleAddToCart }) => {
             <img src={item.image} alt={ item.title } />
           </DialogImage>
           <h5>Category: {item.category}</h5>
+          <h6>ID: {item.id}</h6>
+          <p>Amount: { item.amount }</p>
           <p>{item.description}</p>
         </DialogContent>
          <DialogActions>
